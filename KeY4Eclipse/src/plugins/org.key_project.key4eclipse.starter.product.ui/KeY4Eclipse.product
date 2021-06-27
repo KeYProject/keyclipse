@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="KeY 4 Eclipse" uid="org.key_project.sed" id="org.key_project.key4eclipse.starter.product.ui.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="KeY 4 Eclipse" uid="org.key_project.key4eclipse" id="org.key_project.key4eclipse.starter.product.ui.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.key_project.key4eclipse.starter.product.ui/icons/About.gif"/>
