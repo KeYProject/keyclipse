@@ -19,7 +19,11 @@
     <tycho.version>2.2.0</tycho.version>
     <tycho-javadoc.version>2.2.0</tycho-javadoc.version>
     <org.palladiosimulator.maven.tychotprefresh.version>0.2.6</org.palladiosimulator.maven.tychotprefresh.version>
-    <javadoc.args>
+	<org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>org.key_project.key4eclipse</org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>
+	<org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>parent</org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>
+	<org.palladiosimulator.maven.tychotprefresh.tpproject.version>0.1.0-SNAPSHOT</org.palladiosimulator.maven.tychotprefresh.tpproject.version>
+    <org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>pom</org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>
+	<javadoc.args>
       -tag "generated:a:Generated class or method."
       -tag "model:a:EMF model class or method."
       -tag "ordered:a:Ordered collection."
@@ -42,14 +46,24 @@
   </properties>
 
   <modules>
-    <module>Stubby/src/plugins</module>
-    <module>Stubby/src/features</module>
-    <module>KeY4Eclipse/src/plugins</module>
-    <module>KeY4Eclipse/src/features</module>
-    <module>SymbolicExecutionDebugger/src/plugins</module>
-    <module>SymbolicExecutionDebugger/src/features</module>
-    <module>KeYIDE/src/plugins</module>
-    <module>KeYIDE/src/features</module>
+    <module>JMLEditing/src/features/</module>
+    <module>JMLEditing/src/plugins/</module>
+    <module>KeY4Eclipse/src/features/</module>
+    <module>KeY4Eclipse/src/plugins/</module>
+    <module>KeYIDE/src/features/</module>
+    <module>KeYIDE/src/plugins/</module>
+    <module>MonKeY/src/features/</module>
+    <module>MonKeY/src/plugins/</module>
+    <module>ShellUtility/src/features/</module>
+    <module>ShellUtility/src/plugins/</module>
+    <module>Stubby/src/features/</module>
+    <module>Stubby/src/plugins/</module>
+    <!--<module>SymbolicExecutionDebugger/serverSrc/features/</module>
+    <module>SymbolicExecutionDebugger/serverSrc/plugins/</module>-->
+    <module>SymbolicExecutionDebugger/src/features/</module>
+    <module>SymbolicExecutionDebugger/src/plugins/</module>
+    <module>VisualDbC/src/features/</module>
+    <module>VisualDbC/src/plugins/</module>
   </modules>
 
   <name>${project.artifactId}</name>

@@ -1,0 +1,38 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.key_project.key4eclipse</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../../../</relativePath>
+	</parent>
+	<groupId>de.hentschel.visualdbc</groupId>
+	<artifactId>plugins</artifactId>	
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>de.hentschel.visualdbc.dataSource</module>
+		<module>de.hentschel.visualdbc.dataSource.key</module>
+		<module>de.hentschel.visualdbc.dataSource.ui</module>
+		<module>de.hentschel.visualdbc.dbcmodel</module>
+		<module>de.hentschel.visualdbc.dbcmodel.diagram</module>
+		<module>de.hentschel.visualdbc.dbcmodel.diagram.custom</module>
+		<module>de.hentschel.visualdbc.dbcmodel.edit</module>
+		<module>de.hentschel.visualdbc.dbcmodel.editor</module>
+		<module>de.hentschel.visualdbc.example</module>
+		<module>de.hentschel.visualdbc.generation</module>
+		<module>de.hentschel.visualdbc.generation.ui</module>
+		<module>de.hentschel.visualdbc.help</module>
+		<module>de.hentschel.visualdbc.interactive.proving.ui</module>
+		<module>de.hentschel.visualdbc.key.ui</module>
+		<module>de.hentschel.visualdbc.product.ui</module>
+		<module>de.hentschel.visualdbc.statistic.ui</module>
+	</modules>
+
+</project>
+
