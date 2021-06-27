@@ -46,24 +46,26 @@
   </properties>
 
   <modules>
-    <module>JMLEditing/src/features/</module>
-    <module>JMLEditing/src/plugins/</module>
-    <module>KeY4Eclipse/src/features/</module>
-    <module>KeY4Eclipse/src/plugins/</module>
-    <module>KeYIDE/src/features/</module>
-    <module>KeYIDE/src/plugins/</module>
-    <module>MonKeY/src/features/</module>
-    <module>MonKeY/src/plugins/</module>
-    <module>ShellUtility/src/features/</module>
-    <module>ShellUtility/src/plugins/</module>
-    <module>Stubby/src/features/</module>
-    <module>Stubby/src/plugins/</module>
+    <module>KeYLib</module>
+    <module>JMLEditing/src/features</module>
+    <module>JMLEditing/src/plugins</module>
+    <module>KeY4Eclipse/src/features</module>
+    <module>KeY4Eclipse/src/plugins</module>
+    <module>KeY4Eclipse/src/updateSite</module>
+    <module>KeYIDE/src/features</module>
+    <module>KeYIDE/src/plugins</module>
+    <module>MonKeY/src/features</module>
+    <module>MonKeY/src/plugins</module>
+    <module>ShellUtility/src/features</module>
+    <module>ShellUtility/src/plugins</module>
+    <module>Stubby/src/features</module>
+    <module>Stubby/src/plugins</module>
     <!--<module>SymbolicExecutionDebugger/serverSrc/features/</module>
     <module>SymbolicExecutionDebugger/serverSrc/plugins/</module>-->
-    <module>SymbolicExecutionDebugger/src/features/</module>
-    <module>SymbolicExecutionDebugger/src/plugins/</module>
-    <module>VisualDbC/src/features/</module>
-    <module>VisualDbC/src/plugins/</module>
+    <module>SymbolicExecutionDebugger/src/features</module>
+    <module>SymbolicExecutionDebugger/src/plugins</module>
+    <module>VisualDbC/src/features</module>
+    <module>VisualDbC/src/plugins</module>
   </modules>
 
   <name>${project.artifactId}</name>
