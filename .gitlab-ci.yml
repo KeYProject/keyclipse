@@ -1,106 +1,27 @@
-#
-# This files describes the workflow of the continous integration
-# checker for KeY run within gitlab.
-#
-# Jenkins runs are triggered from somewhere else.
-#
-
-cache:
-  policy: pull-push
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
-  untracked: true
-  key: ${CI_COMMIT_REF_SLUG}
+image: maven:latest
 
 variables:
-  GRADLE_OPTS:  "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2 -Dorg.gradle.configureondemand=true"
-  GIT_DEPTH: 0
-  # SONAR_TOKEN: configured in gitlab-ci web ui. Ask <weigl@kit.edu> if you need this token.
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
-before_script:
-  #  - echo `pwd` # debug
-  #  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
-  - export GRADLE_USER_HOME=`pwd`/.gradle
+cache:
+  paths:
+    - .m2/repository/
+    - target/
 
-stages:
-    - primary
-    - secondary
-    - ternary
-
-compile:classes:
-  stage: primary
-  image: wadoon/key-test-docker:jdk11
+build:
+  stage: build
   script:
-    - javac -version
-    - cd key
-    - gradle --build-cache classes
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
+    - mvn $MAVEN_CLI_OPTS compile
 
-compile:testClasses:
-  dependencies:  ["compile:classes"]
-  stage: secondary
-  image: wadoon/key-test-docker:jdk11
+test:
+  stage: test
   script:
-    - javac -version
-    - cd key
-    - gradle --build-cache --parallel testClasses
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull-push
-    paths:
-      - build
-      - .gradle
+    - mvn $MAVEN_CLI_OPTS test
 
-compile:testClasses8:
-  dependencies:  []
-  stage: secondary
-  image: wadoon/key-test-docker:jdk8
+deploy:
+  stage: deploy
   script:
-    - javac -version
-    - cd key
-    - gradle --parallel classes testClasses
-
-sonarqube:
-  dependencies:  ["compile:testClasses"]
-  stage: ternary
-  image: wadoon/key-test-docker:jdk11
-  allow_failure: true
-  script:
-    - cd key
-    - gradle --build-cache --continue -Dsonar.qualitygate.wait=true -DjacocoEnabled=true testFast sonarqube
-    - ./scripts/tools/sonarqube_hint.py
+    - mvn $MAVEN_CLI_OPTS deploy
   only:
-    - merge_requests
     - master
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
-  artifacts:
-    reports:
-      junit:
-        - "**/**/build/test-results/*/TEST-*.xml"
-
-checkstyle:
-  stage: primary
-  image: wadoon/key-test-docker:jdk11
-  allow_failure: true
-  script:
-    - (key/scripts/tools/checkstyle/runIncrementalCheckstyle.sh | tee report.txt) || true
-    - key/scripts/tools/checkstyle/translateAudit.py report.txt > report.json
-  artifacts:
-    name: "checkstyle-report-$CI_JOB_ID"
-    paths:
-      - report.txt
-    when: always
-    reports:
-      codequality: report.json
-    expire_in: 1 year
