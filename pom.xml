@@ -43,6 +43,8 @@
       -link ${java.api.doc}
     </javadoc.additional.args>
     <updatesite.aggregator.smtpHost>smtp.ira.uka.de</updatesite.aggregator.smtpHost>
+    <tools.mdsd.dependencies.eclipse-version>2020-12</tools.mdsd.dependencies.eclipse-version>
+    <tools.mdsd.dependencies.ecoreworkflow-version>0.3.0</tools.mdsd.dependencies.ecoreworkflow-version>
   </properties>
 
   <modules>
@@ -96,6 +98,26 @@
 <url>http://github.com/mdsd-tools/maven-build-parents/tree/master</url>
 </scm>
   -->
+
+
+  <repositories>
+    <repository>
+      <id>eclipse</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/${tools.mdsd.dependencies.eclipse-version}</url>
+    </repository>
+    <repository>
+      <id>eclipse-orbit</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/tools/orbit/downloads/${tools.mdsd.dependencies.eclipse-version}</url>
+    </repository>
+    <repository>
+      <id>mdsd.tools-ecoreworkflow</id>
+      <layout>p2</layout>
+      <url>https://updatesite.mdsd.tools/ecore-workflow/releases/${tools.mdsd.dependencies.ecoreworkflow-version}</url>
+    </repository>
+  </repositories>
+
 
 
   <profiles>
