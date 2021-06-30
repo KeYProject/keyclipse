@@ -18,10 +18,10 @@
 	<classpathentry exported="true" kind="lib" path="key.core-2.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="key.core.proof_references-2.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="key.core.symbolic_execution-2.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="key.core.testgen-2.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="key.core.testgen-2.9.jar" sourcepath="/home/weigl/work/key/key/"/>
 	<classpathentry exported="true" kind="lib" path="key.removegenerics-2.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="key.ui-2.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="key.util-2.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="key.util-2.9.jar" sourcepath="/home/weigl/work/key/key/key.util/"/>
 	<classpathentry exported="true" kind="lib" path="keyext.interactionlog-2.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="keyext.ui.testgen-2.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="miglayout-core-5.2.jar"/>

@@ -1,6 +1,7 @@
 package org.key_project.key4eclipse.common.ui.testGeneration;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
@@ -141,22 +142,28 @@ public class EclipseTestGenerator extends AbstractTestGenerator {
     * {@inheritDoc}
     */
    @Override
-   protected void generateFiles(final SolverLauncher launcher, 
+   protected void generateFiles(//FIXME@bubel: final SolverLauncher launcher parameter does not exists anymore, 
                                 final Collection<SMTSolver> problemSolvers, 
                                 final TestGenerationLog log, 
-                                final Proof originalProof) throws Exception {
-      ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
-         @Override
-         public void run(IProgressMonitor monitor) throws CoreException {
-            try {
-               generateEclipseFiles(launcher, problemSolvers, log, originalProof);
-            }
-            catch (Exception e) {
-               LogUtil.getLogger().logError(e);              
-               throw new CoreException(LogUtil.getLogger().createErrorStatus(e));
-            }
-         }
-      }, null);
+                                final Proof originalProof) throws IOException {
+      try {
+		ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+		     @Override
+		     public void run(IProgressMonitor monitor) throws CoreException {
+		        try {
+		           generateEclipseFiles(/*FIXME launcher*/null, problemSolvers, log, originalProof);
+		        }
+		        catch (Exception e) {
+		           LogUtil.getLogger().logError(e);              
+		           throw new CoreException(LogUtil.getLogger().createErrorStatus(e));
+		        }
+		     }
+		  }, null);
+	} catch (CoreException e) {
+		// FIXME@bubel: generated because Exception are not allowed anymore
+		e.printStackTrace();
+		throw new RuntimeException(e);
+	}
    }
 
    /**
@@ -180,8 +187,11 @@ public class EclipseTestGenerator extends AbstractTestGenerator {
          throw new IllegalStateException("The Java project '" + testProject.getProject().getName() + "' has no source folder.");
       }
       // Create test generator
-      originalProof.getProofIndependentSettings().getTestGenerationSettings().setRFL(true);
-      originalProof.getProofIndependentSettings().getTestGenerationSettings().setUseJunit(true);
+      
+      //FIXME@bubel: Find settings
+      // originalProof.getProofIndependentSettings().getTestGenerationSettings().setRFL(true);
+      // originalProof.getProofIndependentSettings().getTestGenerationSettings().setUseJunit(true);
+      
       final TestCaseGenerator tg = new TestCaseGenerator(originalProof, true);
       tg.setLogger(log);
       tg.setFileName(JDTUtil.ensureValidJavaTypeName(testFileName, testProject));

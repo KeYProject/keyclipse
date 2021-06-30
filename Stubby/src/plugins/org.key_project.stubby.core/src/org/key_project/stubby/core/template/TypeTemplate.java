@@ -74,7 +74,7 @@ public class TypeTemplate {
     * @param level The current indent level.
     */
    protected void appendType(Type type, StringBuffer sb, int level) {
-      final String INDENT = StringUtil.createLine(" ", level * 3);
+      final String INDENT = StringUtil.repeat(" ", level * 3);
       // Append type declaration
       sb.append(INDENT + "/**" + NL + INDENT + " * @generated" + NL + INDENT + " */" + NL);
       sb.append(INDENT + type.getVisibility().toJavaKeyword());
@@ -190,7 +190,7 @@ public class TypeTemplate {
     * @param level The current indent level.
     */
    protected void appendMethod(Method method, StringBuffer sb, int level) {
-      final String INDENT = StringUtil.createLine(" ", level * 3);
+      final String INDENT = StringUtil.repeat(" ", level * 3);
       sb.append(INDENT + "/**" + NL);
       sb.append(INDENT + " * @generated" + NL);
       sb.append(INDENT + " */" + NL);
@@ -259,7 +259,7 @@ public class TypeTemplate {
     * @param level The current indent level.
     */
    protected void appendField(Field field, StringBuffer sb, int level) {
-      final String INDENT = StringUtil.createLine(" ", level * 3);
+      final String INDENT = StringUtil.repeat(" ", level * 3);
       sb.append(INDENT + "/**" + NL);
       sb.append(INDENT + " * @generated" + NL);
       sb.append(INDENT + " */" + NL);
