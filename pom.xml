@@ -120,6 +120,22 @@
 
 
 
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-compiler-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <compilerArgument>-warn:+discouraged,forbidden</compilerArgument>
+          <useProjectSettings>false</useProjectSettings>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
   <profiles>
     <!-- Build configuration of parent POM itself -->
     <profile>
