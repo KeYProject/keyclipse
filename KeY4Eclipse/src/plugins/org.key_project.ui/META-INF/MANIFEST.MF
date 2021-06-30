@@ -19,8 +19,7 @@ Bundle-ClassPath: .,
  key.dist.lib/keyext.interactionlog-2.8.0.jar,
  key.dist.lib/miglayout-core-5.2.jar,
  key.dist.lib/miglayout-swing-5.2.jar
-Bundle-RequiredExecutionEnvironment: JavaSE-12,
- JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: KeY Project
 Export-Package: bibliothek.extension.gui.dock,
