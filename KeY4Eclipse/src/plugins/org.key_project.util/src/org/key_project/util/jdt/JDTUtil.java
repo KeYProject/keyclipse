@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
@@ -89,12 +90,12 @@ public class JDTUtil {
     * File extension of Java source files.
     */
    public static final String JAVA_FILE_EXTENSION = "java";
-   
+
    /**
     * File extension of Java source files with leading dot.
     */
    public static final String JAVA_FILE_EXTENSION_WITH_DOT = "." + JAVA_FILE_EXTENSION;
-   
+
    /**
     * Forbid instances by this private constructor.
     */
@@ -108,11 +109,11 @@ public class JDTUtil {
     * @return The created {@link IJavaProject}.
     * @throws CoreException Occurred Exception.
     */
-   public static IJavaProject createJavaProject(String name, 
+   public static IJavaProject createJavaProject(String name,
                                                 IProject... referencedProjects) throws CoreException {
-      return createJavaProject(name, 
-                               getOutputFolderName(), 
-                               new String[] {getSourceFolderName()}, 
+      return createJavaProject(name,
+                               getOutputFolderName(),
+                               new String[] {getSourceFolderName()},
                                referencedProjects);
    }
 
@@ -125,7 +126,7 @@ public class JDTUtil {
     * @return The created {@link IJavaProject}.
     * @throws CoreException Occurred Exception.
     */
-   public static IJavaProject createJavaProject(String name, 
+   public static IJavaProject createJavaProject(String name,
                                                 String outputFolderName,
                                                 String[] srcFolderNames,
                                                 IProject... referencedProjects) throws CoreException {
@@ -139,7 +140,7 @@ public class JDTUtil {
       }
       return convertToJavaProject(project, bin, src, referencedProjects);
    }
-   
+
    /**
     * Returns the default output folder name.
     * @return The default output folder name.
@@ -147,7 +148,7 @@ public class JDTUtil {
    public static String getOutputFolderName() {
       return PreferenceConstants.getPreferenceStore().getString(PreferenceConstants.SRCBIN_BINNAME);
    }
-   
+
    /**
     * Returns the default source folder name.
     * @return The default source folder name.
@@ -155,7 +156,7 @@ public class JDTUtil {
    public static String getSourceFolderName() {
       return PreferenceConstants.getPreferenceStore().getString(PreferenceConstants.SRCBIN_SRCNAME);
    }
-   
+
    /**
     * Converts the given {@link IProject} into an {@link IJavaProject}.
     * @param project The {@link IProject} to convert.
@@ -165,11 +166,11 @@ public class JDTUtil {
     * @return The created {@link IJavaProject}.
     * @throws CoreException Occurred Exception.
     */
-   public static IJavaProject convertToJavaProject(IProject project, 
-                                                   final IContainer bin, 
-                                                   final IContainer[] src, 
+   public static IJavaProject convertToJavaProject(IProject project,
+                                                   final IContainer bin,
+                                                   final IContainer[] src,
                                                    final IProject... referencedProjects) throws CoreException {
-      final IJavaProject javaProject = JavaCore.create(project); 
+      final IJavaProject javaProject = JavaCore.create(project);
       IRunnableWithException run = new AbstractRunnableWithException() {
          @Override
          public void run() {
@@ -178,7 +179,7 @@ public class JDTUtil {
                IClasspathEntry[] entries = new IClasspathEntry[src.length + referencedProjects.length];
                for (int i = 0; i < src.length; i++) {
                   entries[i] = JavaCore.newSourceEntry(src[i].getFullPath());
-                  
+
                }
                for (int i = 0; i < referencedProjects.length; i++) {
                   entries[i + src.length] = JavaCore.newProjectEntry(referencedProjects[i].getFullPath());
@@ -201,7 +202,7 @@ public class JDTUtil {
       }
       return javaProject;
    }
-   
+
    /**
     * Returns the default JRE library entries.
     * @return The default JRE library entries.
@@ -209,7 +210,7 @@ public class JDTUtil {
    public static IClasspathEntry[] getDefaultJRELibrary() {
        return PreferenceConstants.getDefaultJRELibrary();
    }
-   
+
    /**
     * Searches the {@link IMethod} as JDT representation which ends
     * at the given index.
@@ -239,7 +240,7 @@ public class JDTUtil {
       }
       return result;
    }
-   
+
    /**
     * Searches the {@link IType} as JDT representation which ends
     * at the given index.
@@ -264,7 +265,7 @@ public class JDTUtil {
       }
       return result;
    }
-   
+
    /**
     * Returns the tab width used in the given {@link IJavaElement}.
     * @param element The {@link IJavaElement} to get its tab width.
@@ -273,21 +274,21 @@ public class JDTUtil {
    public static int getTabWidth(IJavaElement element) {
       return element != null ? CodeFormatterUtil.getTabWidth(element.getJavaProject()) : 0;
    }
-   
+
    /**
     * Returns the first {@link IJavaElement} from the given once that
     * has the given text label.
     * @param elements The {@link IJavaElement}s to search in.
     * @param textLabel The text label for that the {@link IJavaElement} is needed.
     * @return The first found {@link IJavaElement} or {@code null} if no one was found.
-    * @throws JavaModelException Occurred Exception 
+    * @throws JavaModelException Occurred Exception
     */
    public static IMethod getElementForQualifiedMethodLabel(IMethod[] elements, String textLabel) throws JavaModelException {
        IMethod result = null;
        if (elements != null) {
            int i = 0;
            while (result == null && i < elements.length) {
-               if (ObjectUtil.equals(textLabel, getQualifiedMethodLabel(elements[i]))) {
+               if (Objects.equals(textLabel, getQualifiedMethodLabel(elements[i]))) {
                    result = elements[i];
                }
                i++;
@@ -295,7 +296,7 @@ public class JDTUtil {
        }
        return result;
    }
-   
+
    /**
     * <p>
     * Returns the unique method signature for the given {@link IMethod}.
@@ -338,7 +339,7 @@ public class JDTUtil {
          throw e.getCause();
       }
    }
-   
+
    /**
     * Utility class to compute the full qualified type of a method parameter.
     * @author Martin Hentschel
@@ -382,7 +383,7 @@ public class JDTUtil {
             String[][] resolvedTypes = declaringType.resolveType(simpleName);
             if (resolvedTypes != null && resolvedTypes.length > 0) {
                return (resolvedTypes[0][0].equals("") ? "" : resolvedTypes[0][0] + ".") + resolvedTypes[0][1];
-            } 
+            }
             else {
                return simpleName;
             }
@@ -392,7 +393,7 @@ public class JDTUtil {
          }
       }
    }
-   
+
    /**
     * A utility {@link RuntimeException} that is used to transfer
     * a {@link JavaModelException} back in the call hierarchy.
@@ -420,7 +421,7 @@ public class JDTUtil {
          return (JavaModelException)super.getCause();
       }
    }
-   
+
    /**
     * Returns a human readable text label for the given {@link IJavaElement}.
     * @param element The {@link IJavaElement} to convert,
@@ -429,7 +430,7 @@ public class JDTUtil {
    public static String getTextLabel(IJavaElement element) {
        return JavaElementLabels.getTextLabel(element, JavaElementLabels.ALL_DEFAULT);
    }
-   
+
    /**
     * Returns the first {@link IJavaElement} from the given once that
     * has the given text label.
@@ -442,7 +443,7 @@ public class JDTUtil {
        if (elements != null) {
            int i = 0;
            while (result == null && i < elements.length) {
-               if (ObjectUtil.equals(textLabel, getTextLabel(elements[i]))) {
+               if (Objects.equals(textLabel, getTextLabel(elements[i]))) {
                    result = elements[i];
                }
                i++;
@@ -450,7 +451,7 @@ public class JDTUtil {
        }
        return result;
    }
-   
+
    /**
     * Adds the given {@link IClasspathEntry} to the {@link IJavaProject}.
     * @param javaProject The {@link IJavaProject} to add to.
@@ -470,7 +471,7 @@ public class JDTUtil {
            javaProject.setRawClasspath(newEntries, null);
        }
    }
-   
+
    /**
     * Returns all {@link IJavaProject}s.
     * @return All {@link IJavaProject}s.
@@ -501,7 +502,7 @@ public class JDTUtil {
       }
       return packages.toArray(new IJavaElement[packages.size()]);
    }
-   
+
    /**
     * Returns the package that contains the {@link IJavaElement}.
     * @param element The {@link IJavaElement}.
@@ -526,7 +527,7 @@ public class JDTUtil {
          return null;
       }
    }
-   
+
    /**
     * <p>
     * Returns the {@link IJavaProject} for the given {@link IProject}.
@@ -561,7 +562,7 @@ public class JDTUtil {
        IProject project = ResourceUtil.getProject(projectName);
        return getJavaProject(project);
    }
-   
+
    /**
     * Checks if the given {@link IProject} is a Java project.
     * @param project The {@link IProject} to check.
@@ -585,7 +586,7 @@ public class JDTUtil {
    public static boolean isJavaProject(IJavaProject javaProject) {
       return javaProject != null && javaProject.exists();
    }
-   
+
    /**
     * Checks if the given {@link IResource} is a "Java" file.
     * @param file The {@link IResource} to check.
@@ -600,7 +601,7 @@ public class JDTUtil {
          return false;
       }
    }
-   
+
    /**
     * Checks if the given {@link IResource} is or is contained in a source folder of its project.
     * @param resource The {@link IResource} to check.
@@ -653,7 +654,7 @@ public class JDTUtil {
       }
       return result;
    }
-   
+
    /**
     * Returns the locations in the local file system of all used
     * source entries in the java build path of the given project.
@@ -664,7 +665,7 @@ public class JDTUtil {
    public static List<File> getSourceLocations(IProject project) throws JavaModelException {
        return getSourceLocations(project, new HashSet<IProject>());
    }
-   
+
    /**
     * Internal helper method that is used in {@link #getSourceLocations(IProject)}
     * to compute the source path. It is required to solve cycles in project dependencies.
@@ -672,7 +673,7 @@ public class JDTUtil {
     * @param alreadyHandledProjects The already handled {@link IProject} that don't need to be analysed again.
     * @return The found source locations in the file system.
     * @throws JavaModelException Occurred Exception.
-    */    
+    */
    private static List<File> getSourceLocations(IProject project, Set<IProject> alreadyHandledProjects) throws JavaModelException {
        List<File> result = new LinkedList<File>();
        if (project != null) {
@@ -693,7 +694,7 @@ public class JDTUtil {
        }
        return result;
    }
-   
+
    /**
     * Returns the {@link IResource}s in the workspace of all used
     * source entries in the java build path of the given project.
@@ -704,7 +705,7 @@ public class JDTUtil {
    public static List<IResource> getSourceResources(IProject project) throws JavaModelException {
        return getSourceResources(project, new HashSet<IProject>());
    }
-   
+
    /**
     * Internal helper method that is used in {@link #getSourceResources(IProject)}
     * to compute the source path. It is required to solve cycles in project dependencies.
@@ -712,7 +713,7 @@ public class JDTUtil {
     * @param alreadyHandledProjects The already handled {@link IProject} that don't need to be analysed again.
     * @return The found source {@link IResource}s in the workspace.
     * @throws JavaModelException Occurred Exception.
-    */    
+    */
    private static List<IResource> getSourceResources(IProject project, Set<IProject> alreadyHandledProjects) throws JavaModelException {
        List<IResource> result = new LinkedList<IResource>();
        if (project != null) {
@@ -733,16 +734,16 @@ public class JDTUtil {
        }
        return result;
    }
-   
+
    /**
     * Returns the {@link IResource}s of the given {@link IClasspathEntry}.
     * @param javaProject The actual {@link IJavaProject} that provides the {@link IClasspathEntry}.
     * @param entry The given {@link IClasspathEntry}.
     * @param alreadyHandledProjects The already handled {@link IProject} that don't need to be analysed again.
     * @return The found {@link IResource}s.
-    * @throws JavaModelException 
+    * @throws JavaModelException
     */
-   private static List<IResource> getResourceFor(IJavaProject javaProject, 
+   private static List<IResource> getResourceFor(IJavaProject javaProject,
                                                  IClasspathEntry entry,
                                                  int expectedKind,
                                                  Set<IProject> alreadyHandledProjects) throws JavaModelException {
@@ -790,16 +791,16 @@ public class JDTUtil {
            return null;
        }
    }
-   
+
    /**
     * Returns the locations of the given {@link IClasspathEntry}.
     * @param javaProject The actual {@link IJavaProject} that provides the {@link IClasspathEntry}.
     * @param entry The given {@link IClasspathEntry}.
     * @param alreadyHandledProjects The already handled {@link IProject} that don't need to be analysed again.
     * @return The found locations.
-    * @throws JavaModelException 
+    * @throws JavaModelException
     */
-   public static List<File> getLocationFor(IJavaProject javaProject, 
+   public static List<File> getLocationFor(IJavaProject javaProject,
                                             IClasspathEntry entry,
                                             int expectedKind,
                                             Set<IProject> alreadyHandledProjects) throws JavaModelException {
@@ -847,9 +848,9 @@ public class JDTUtil {
            return null;
        }
    }
-   
+
    /**
-    * Parses the given {@link ICompilationUnit} in the specified range into an AST. 
+    * Parses the given {@link ICompilationUnit} in the specified range into an AST.
     * @param compilationUnit The {@link ICompilationUnit} to parse.
     * @param offset The start index in the text to parse.
     * @param length The length of the text to parse.
@@ -861,7 +862,7 @@ public class JDTUtil {
       parser.setSourceRange(offset, length);
       return parser.createAST(null);
    }
-   
+
    /**
     * Returns the {@link Block} which represents the method body
     * of the given {@link IMethod} in an {@link ASTParser}.
@@ -882,7 +883,7 @@ public class JDTUtil {
          return null;
       }
    }
-   
+
    /**
     * Utility class used by {@link JDTUtil#getMethodBody(IMethod)}
     * to compute the result.
@@ -893,17 +894,17 @@ public class JDTUtil {
        * The result.
        */
       private Block result;
-      
+
       /**
        * The start index of the method.
        */
       private int methodStart;
-      
+
       /**
        * The end index of the method.
        */
       private int methodEnd;
-      
+
       /**
        * Constructor.
        * @param methodStart The start index of the method.
@@ -913,7 +914,7 @@ public class JDTUtil {
          this.methodStart = methodStart;
          this.methodEnd = methodStart + methodLength;
       }
-      
+
       /**
        * {@inheritDoc}
        */
@@ -954,14 +955,14 @@ public class JDTUtil {
                @Override
                public boolean select(IMethod element) {
                   try {
-                     if (ObjectUtil.equals(name, element.getElementName())) {
+                     if (Objects.equals(name, element.getElementName())) {
                         String[] parameters = element.getParameterTypes();
                         if (parameters.length == parameterTypes.length) {
                            boolean parametersMatches = true;
                            int i = 0;
                            while (parametersMatches && i < parameters.length) {
                               String resolvedType = resolveTypeSignature(parameters[i], jdtType);
-                              if (!ObjectUtil.equals(resolvedType, parameterTypes[i])) {
+                              if (!Objects.equals(resolvedType, parameterTypes[i])) {
                                  parametersMatches = false;
                               }
                               i++;
@@ -990,7 +991,7 @@ public class JDTUtil {
          throw (JavaModelException)e.getCause();
       }
    }
-   
+
    /**
     * Resolves the given type signature.
     * @param refTypeSig The type signature to resolve.
@@ -1071,8 +1072,8 @@ public class JDTUtil {
          return null;
       }
    }
-   
-   
+
+
    /**
     * Returns all {@link IPackageFragmentRoot}s of the given {@link IJavaProject}.
     * @param project The {@link IJavaProject} to list its {@link IPackageFragmentRoot}s.
@@ -1091,7 +1092,7 @@ public class JDTUtil {
       }
       return result;
    }
-   
+
    /**
     * Lists all {@link ICompilationUnit}s recursively within given {@link IJavaElement}s
     * @param javaElements The {@link IJavaElement}s to list its contained {@link ICompilationUnit}s.
@@ -1107,7 +1108,7 @@ public class JDTUtil {
       }
       return result;
    }
-   
+
    /**
     * Utility method used by {@link #listCompilationUnit(List)}.
     * @param javaElement The current {@link IJavaElement} to search in.
@@ -1125,7 +1126,7 @@ public class JDTUtil {
          }
       }
    }
-   
+
    /**
     * Parses the given {@link ICompilationUnit}.
     * @param compilationUnit The {@link ICompilationUnit} to parse.
@@ -1146,7 +1147,7 @@ public class JDTUtil {
          return null;
       }
    }
-   
+
    /**
     * Parses the given {@link IClassFile}.
     * @param classFile The {@link IClassFile} to parse.
@@ -1167,7 +1168,7 @@ public class JDTUtil {
          return null;
       }
    }
-   
+
    /**
     * Parses the given {@link ICompilationUnit}.
     * @param in The {@link InputStream} to parse.
@@ -1178,7 +1179,7 @@ public class JDTUtil {
       String content = IOUtil.readFrom(in);
       return parse(content);
    }
-   
+
    /**
     * Parses the given {@link ICompilationUnit}.
     * @param content The {@link String} to parse.
@@ -1187,7 +1188,7 @@ public class JDTUtil {
    public static ASTNode parse(String content) {
       return parse(content, ASTParser.K_COMPILATION_UNIT);
    }
-   
+
    /**
     * Parses the given {@link ICompilationUnit}.
     * @param content The {@link String} to parse.

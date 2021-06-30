@@ -13,6 +13,8 @@
 
 package org.key_project.util.eclipse.view.editorInView;
 
+import java.util.Objects;
+
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionTracker;
@@ -41,7 +43,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.internal.PartSite;
 import org.eclipse.ui.services.IDisposable;
 import org.key_project.util.eclipse.WorkbenchUtil;
-import org.key_project.util.java.ObjectUtil;
+
 
 /**
  * <p>
@@ -183,7 +185,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
    @Override
    public IEditorPart getActiveEditor() {
       IWorkbenchPart activePart = wrapperViewSite.getPage().getActivePart();
-      if (activePart != null && ObjectUtil.equals(activePart.getSite(), wrapperViewSite)) {
+      if (activePart != null && Objects.equals(activePart.getSite(), wrapperViewSite)) {
          return wrappedEditorPart;
       }
       else {
@@ -202,7 +204,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */   
    @Override
    public boolean isPartVisible(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrappedEditorPart)) {
+      if (Objects.equals(part, wrappedEditorPart)) {
          return wrapperViewSite.getPage().isPartVisible(wrapperViewSite.getPart());
       }
       else {
@@ -226,7 +228,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     * @param part The {@link IWorkbenchPart} which has caused the event.
     */
    protected void handlePartActivated(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrapperViewSite.getPart())) {
+      if (Objects.equals(part, wrapperViewSite.getPart())) {
          list.firePartActivated(wrappedEditorPart);
       }
       else {
@@ -242,7 +244,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     * @param part The {@link IWorkbenchPart} which has caused the event.
     */
    protected void handlePartBroughtToTop(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrapperViewSite.getPart())) {
+      if (Objects.equals(part, wrapperViewSite.getPart())) {
          list.firePartBroughtToTop(wrappedEditorPart);
       }
       else {
@@ -258,7 +260,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     * @param part The {@link IWorkbenchPart} which has caused the event.
     */
    protected void handlePartClosed(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrapperViewSite.getPart())) {
+      if (Objects.equals(part, wrapperViewSite.getPart())) {
          list.firePartClosed(wrappedEditorPart);
       }
       else {
@@ -274,7 +276,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     * @param part The {@link IWorkbenchPart} which has caused the event.
     */
    protected void handlePartDeactivated(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrapperViewSite.getPart())) {
+      if (Objects.equals(part, wrapperViewSite.getPart())) {
          list.firePartDeactivated(wrappedEditorPart);
       }
       else {
@@ -290,7 +292,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     * @param part The {@link IWorkbenchPart} which has caused the event.
     */
    protected void handlePartOpened(IWorkbenchPart part) {
-      if (ObjectUtil.equals(part, wrapperViewSite.getPart())) {
+      if (Objects.equals(part, wrapperViewSite.getPart())) {
          list.firePartOpened(wrappedEditorPart);
       }
       else {
@@ -323,7 +325,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartVisible(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartVisible(editorRef);
       }
       else {
@@ -340,7 +342,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartOpened(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartOpened(editorRef);
       }
       else {
@@ -357,7 +359,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartInputChanged(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartInputChanged(editorRef);
       }
       else {
@@ -374,7 +376,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartHidden(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartHidden(editorRef);
       }
       else {
@@ -391,7 +393,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartDeactivated(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartDeactivated(editorRef);
       }
       else {
@@ -408,7 +410,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartClosed(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartClosed(editorRef);
       }
       else {
@@ -425,7 +427,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartBroughtToTop(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartBroughtToTop(editorRef);
       }
       else {
@@ -442,7 +444,7 @@ public class EditorInViewWorkbenchPage extends PartSite implements IWorkbenchPag
     */
    protected void handlePartActivated(IWorkbenchPartReference partRef) {
       IWorkbenchPartReference editorRef = wrapperViewSite.getPage().getReference(wrapperViewSite.getPart());
-      if (ObjectUtil.equals(partRef, editorRef)) {
+      if (Objects.equals(partRef, editorRef)) {
          list2.firePartActivated(editorRef);
       }
       else {
