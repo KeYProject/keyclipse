@@ -18,6 +18,10 @@ License information and more details about each project can be found
 in the project folder. Visit also http://key-project.org.
 
 
+## Useful Resources
+
+* https://github.com/MDSD-Tools/Maven-Build-Parents
+
 ## TODO
 
 * [ ] Finish migration to Maven Tycho
