@@ -275,7 +275,8 @@ public class KeYTabComposite extends Composite implements IProofProvider {
     */
    @Override
    public void dispose() {
-      ProofIndependentSettings.DEFAULT_INSTANCE.getViewSettings().removeSettingsListener(viewSettingsListener);
+      // TODO weigl add removeSettingsListener to Settings.		 
+      //ProofIndependentSettings.DEFAULT_INSTANCE.getViewSettings().removeSettingsListener(viewSettingsListener);
       if (node != null) {
          getTermLabelVisibilityManager().removeTermLabelVisibilityManagerListener(termLabelVisibilityManagerListener);
       }

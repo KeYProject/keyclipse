@@ -326,7 +326,8 @@ public abstract class AbstractTruthValueComposite implements IProofProvider, IDi
     */
    @Override
    public void dispose() {
-      ProofIndependentSettings.DEFAULT_INSTANCE.getViewSettings().removeSettingsListener(viewSettingsListener);
+      //TODO weigl add removeSettingsListener to Settings.		 
+	  //ProofIndependentSettings.DEFAULT_INSTANCE.getViewSettings().removeSettingsListener(viewSettingsListener);
       if (currentNode != null) {
          getTermLabelVisibilityManager().removeTermLabelVisibilityManagerListener(termLabelVisibilityManagerListener);
       }
