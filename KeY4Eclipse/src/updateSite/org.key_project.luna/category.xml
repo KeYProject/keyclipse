@@ -37,6 +37,7 @@
       <category name="org.key_project.category.debugging"/>
    </bundle>
    <bundle id="KeYLib"/>
+   <bundle id="org.key_project.ui"/>
    <category-def name="org.key_project.category.verification" label="Verification">
       <description>
          Provides tools for verification.
