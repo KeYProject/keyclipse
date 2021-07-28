@@ -9,6 +9,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.help,
  org.eclipse.ui.intro
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: Martin Hentschel
 Automatic-Module-Name: de.hentschel.visualdbc.help

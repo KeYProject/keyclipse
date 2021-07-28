@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.graphiti,
  org.eclipse.graphiti.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: KeY Project
 Export-Package: org.key_project.sed.ui.visualization,
  org.key_project.sed.ui.visualization.action,

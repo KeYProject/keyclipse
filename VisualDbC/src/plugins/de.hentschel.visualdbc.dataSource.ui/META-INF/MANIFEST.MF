@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.key_project.util,
  de.hentschel.visualdbc.dataSource
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: de.hentschel.visualdbc.datasource.ui.composite,
  de.hentschel.visualdbc.datasource.ui.composite.event,
  de.hentschel.visualdbc.datasource.ui.setting,

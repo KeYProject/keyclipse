@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.key_project.core,
  org.key_project.core.test,
  org.key_project.core.symbolic_execution
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: KeY Project
 Export-Package: org.key_project.core.symbolic_execution.test

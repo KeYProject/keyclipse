@@ -35,7 +35,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.key_project.ui,
  org.key_project.ui.test
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.key_project.sed.key.ui.test.suite,
  org.key_project.sed.key.ui.test.suite.swtbot
 Bundle-Vendor: KeY Project

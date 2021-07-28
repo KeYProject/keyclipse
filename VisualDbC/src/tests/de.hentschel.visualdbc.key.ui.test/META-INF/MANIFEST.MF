@@ -27,7 +27,7 @@ Require-Bundle: org.eclipse.core.runtime,
  de.hentschel.visualdbc.interactive.proving.ui,
  de.hentschel.visualdbc.interactive.proving.ui.test
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: Martin Hentschel
 Export-Package: de.hentschel.visualdbc.key.ui.test.suite,
  de.hentschel.visualdbc.key.ui.test.suite.swtbot,

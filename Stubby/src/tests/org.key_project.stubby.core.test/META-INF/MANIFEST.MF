@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.key_project.util.test,
  org.key_project.stubby.model,
  org.key_project.stubby.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8, JavaSE-11, JavaSE-9
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: KeY Project
 Export-Package: org.key_project.stubby.core.test.suite,
