@@ -43,7 +43,6 @@
       -link ${java.api.doc}
     </javadoc.additional.args>
     <updatesite.aggregator.smtpHost>smtp.ira.uka.de</updatesite.aggregator.smtpHost>
-    <tools.mdsd.dependencies.eclipse-version>2020-12</tools.mdsd.dependencies.eclipse-version>
     <tools.mdsd.dependencies.ecoreworkflow-version>0.3.0</tools.mdsd.dependencies.ecoreworkflow-version>
   </properties>
 
@@ -111,18 +110,19 @@
       <layout>p2</layout>
       <url>http://download.eclipse.org/tools/orbit/downloads/${tools.mdsd.dependencies.eclipse-version}</url>
     </repository>
-    <repository>
-      <id>mdsd.tools-ecoreworkflow</id>
-      <layout>p2</layout>
-      <url>https://updatesite.mdsd.tools/ecore-workflow/releases/${tools.mdsd.dependencies.ecoreworkflow-version}</url>
-    </repository>
+    <!--
+         <repository>
+         <id>mdsd.tools-ecoreworkflow</id>
+         <layout>p2</layout>
+         <url>https://updatesite.mdsd.tools/ecore-workflow/releases/${tools.mdsd.dependencies.ecoreworkflow-version}</url>
+         </repository>
+    -->
   </repositories>
 
 
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-compiler-plugin</artifactId>
@@ -132,6 +132,13 @@
           <useProjectSettings>false</useProjectSettings>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-versions-plugin</artifactId>
+        <version>${tycho.version}</version>
+      </plugin>
+
     </plugins>
   </build>
 
