@@ -12,6 +12,11 @@ cache:
 build:
   stage: build
   script:    
+    - mvn $MAVEN_CLI_OPTS package
+
+build:
+  stage: build
+  script:    
     - mvn $MAVEN_CLI_OPTS compile
 
 test:
