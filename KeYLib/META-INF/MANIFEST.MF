@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: KeyLib
 Bundle-SymbolicName: KeYLib;singleton:=true
 Bundle-Version: 2.9.0
-Bundle-ClassPath: ST4-4.0.8.jar,
- antlr-2.7.7.jar,
+Bundle-ClassPath: antlr-2.7.7.jar,
  antlr-3.5.2.jar,
  antlr-runtime-3.5.2.jar,
  antlr4-runtime-4.7.1.jar,
@@ -28,7 +27,8 @@ Bundle-ClassPath: ST4-4.0.8.jar,
  miglayout-core-5.2.jar,
  miglayout-swing-5.2.jar,
  recoderkey.jar,
- rifl-2.9.jar
+ rifl-2.9.jar,
+ ST4-4.0.8.jar
 Export-Package: antlr,
  antlr.ASdebug,
  antlr.actions.cpp,
