@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface.text;resolution:=optional,
  org.eclipse.ui.editors;resolution:=optional,
  org.eclipse.e4.ui.model.workbench;bundle-version="2.1.800",
- KeYLib;bundle-version="2.9.0";visibility:=reexport
+ KeYLib;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: KeY Project
 Export-Package: org.key_project.util,
