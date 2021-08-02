@@ -420,7 +420,7 @@ Export-Package: antlr,
  recoder.parser,
  recoder.service,
  recoder.util
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: KeyLib
 Import-Package: com.sun.activation.registries;version="1.2.2",
  java.awt,
