@@ -109,6 +109,7 @@ public class SWTBotKeYExampleNewWizardTest extends AbstractSetupTestCase {
       // Close welcome view
       TestUtilsUtil.closeWelcomeView(bot);
       // Get examples
+      Main.ensureExamplesAvailable();
       File examplesDir = new File(Main.getExamplesDir());
       List<ExampleChooser.Example> examples = ExampleChooser.listExamples(examplesDir);
       for (final ExampleChooser.Example example : examples) {

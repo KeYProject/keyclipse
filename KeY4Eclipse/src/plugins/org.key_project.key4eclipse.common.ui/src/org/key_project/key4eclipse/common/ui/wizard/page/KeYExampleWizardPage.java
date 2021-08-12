@@ -115,6 +115,7 @@ public class KeYExampleWizardPage extends WizardPage {
       viewerLayoutData.widthHint = 180;
       examplesViewer.getControl().setLayoutData(viewerLayoutData);
       examplesViewer.setContentProvider(new ExampleNodeContentProvider());
+      Main.ensureExamplesAvailable();
       File examplesDir = new File(Main.getExamplesDir());
       List<ExampleChooser.Example> examples = ExampleChooser.listExamples(examplesDir);
       ExampleNode rootNode = createExampleTree(examples);

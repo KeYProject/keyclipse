@@ -48,6 +48,7 @@ public class KeYExampleUtil {
      * @return A *.key with a fast and simple proof.
      */
     public static File getExampleProof() {
+       Main.ensureExamplesAvailable();
        String exampleDir = Main.getExamplesDir();
        return new File(exampleDir, "firstTouch" + File.separator + "02-Subset" + File.separator + "project.key");
     }
