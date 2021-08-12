@@ -771,7 +771,7 @@
             id="org.key_project.keyide.ui.GoalPropertyTester"
             namespace="org.key_project.keyide.ui"
             properties="isGoal"
-            type="org.eclipse.jface.viewers.IStructuredSelection">
+            type="org.eclipse.jface.viewers.ISelection">
       </propertyTester>
       <propertyTester
             class="org.key_project.keyide.ui.propertyTester.ProofNodeSearchSupportTester"
