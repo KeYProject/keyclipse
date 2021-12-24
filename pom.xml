@@ -15,7 +15,7 @@
   <version>0.1.0-SNAPSHOT</version>
 
   <properties>
-    <tools.mdsd.dependencies.eclipse-version>2021-06</tools.mdsd.dependencies.eclipse-version>
+    <tools.mdsd.dependencies.eclipse-version>2021-12</tools.mdsd.dependencies.eclipse-version>
     <tycho.version>2.2.0</tycho.version>
     <tycho-javadoc.version>2.2.0</tycho-javadoc.version>
     <javadoc.args>
