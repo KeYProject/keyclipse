@@ -14,6 +14,7 @@ pipeline {
         stage('Env') {
             steps {
                 sh "echo $PATH"
+                sh "/root/.sdkman/candidates/maven/current/bin/mvn -version"
             }
         }
 
