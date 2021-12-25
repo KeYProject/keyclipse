@@ -5,6 +5,11 @@ pipeline {
         }
     }
 
+    environment {
+        PATH = "/root/.sdkman/candidates/maven/current/bin:/root/.sdkman/candidates/gradle/current/bin:${env.PATH}"
+    }
+
+
     stages {
         stage('Env') {
             steps {
