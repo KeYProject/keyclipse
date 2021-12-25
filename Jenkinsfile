@@ -13,8 +13,8 @@ pipeline {
     stages {
         stage('Env') {
             steps {
-                sh "echo $PATH"
-                sh "echo $USER $USERNAME $UID"
+                sh 'echo $PATH'
+                sh 'echo $USER $USERNAME $UID'
                 sh "ll /root/.sdkman/candidates/maven/current/bin/mvn"
             }
         }
