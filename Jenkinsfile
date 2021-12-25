@@ -1,23 +1,24 @@
 pipeline {
     agent {
-                docker { image 'node:16.13.1-alpine' }
-
+        docker {
+            image 'wadoon/key-test-docker:jdk11'
+        }
     }
 
     stages {
         stage('Build') {
             steps {
-                sh "mvn clean package -DskipTests"
+                sh "./mvnw clean package -DskipTests"
             }
         }
         stage('Test') {
             steps {
-                sh "mvn test"
+                sh "./mvnw test"
             }
         }
         stage('Deploy') {
             steps {
-                sh "mvn deploy"
+                sh "./mvnw deploy"
             }
         }
     }
