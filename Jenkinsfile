@@ -17,10 +17,11 @@ pipeline {
             steps {
                 sh 'echo $PATH'
                 sh 'echo $USER $USERNAME $UID'
-                sh "ls -l /root/.sdkman/candidates/"
+                sh "ls -l ~/.sdkman/candidates/"
             }
         }
 
+        /*
         stage('Build') {
             steps {
                 sh "mvn clean package -DskipTests"
@@ -35,6 +36,6 @@ pipeline {
             steps {
                 sh "echo 1"
             }
-        }
+        }*/
     }
 }
