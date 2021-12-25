@@ -1,9 +1,10 @@
 pipeline {
     agent {
         docker {
+            any
             //image 'maven:3.8.1-adoptopenjdk-11'
-            args '-v $HOME/.m2:/root/.m2'
-            image 'wadoon/key-test-docker:jdk11'
+            //args '-v $HOME/.m2:/root/.m2'
+            //image 'wadoon/key-test-docker:jdk11'
         }
     }
 
@@ -18,6 +19,7 @@ pipeline {
                 sh 'echo $PATH'
                 sh 'echo $USER $USERNAME $UID'
                 sh "ls -l ~/.sdkman/candidates/"
+                sh "./mvnw -B verify"
             }
         }
 
