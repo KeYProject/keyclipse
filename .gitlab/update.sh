@@ -18,5 +18,16 @@ echo "Building key..."
 
 SHADOW_JAR=$(ls $KEY_FOLDER/key/key.ui/build/libs/*-exe.jar)
 
+echo "Clean KeYLib"
+(cd KeYLib/;
+ rm -rf antlr bibliothek data de de.uka.ilkd.key.util fonts \
+    javax javacc.class jjdoc.class jjtree.class MANIFEST.MF examples.zip \
+    key.properties module-info.class META-INF net org recoder services;
+ ll)
+
+unzip -v $SHADOW_JAR
+
 echo "Unpacking $SHADOW_JAR into KeYLib"
-# zip
+(cd KeYLib; unzip $SHADOW_JAR)
+
+git status
