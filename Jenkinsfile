@@ -8,6 +8,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh "echo $PATH"
+                sh "mvn -version"
+            }
+        }
+
+        stage('Build') {
+            steps {
                 sh "mvn clean package -DskipTests"
             }
         }
