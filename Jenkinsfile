@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'wadoon/key-test-docker:jdk11'
+            image 'maven:3.8.4-adoptopenjdk-11'
+            args '-v $HOME/.m2:/root/.m2'
         }
     }
 
@@ -15,6 +16,7 @@ pipeline {
             steps {
                 sh 'echo $PATH'
                 sh 'echo $USER $USERNAME $UID'
+                sh 'mvn -B'
                 sh "ll /root/.sdkman/candidates/maven/current/bin/mvn"
             }
         }
