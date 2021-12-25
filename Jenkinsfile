@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'echo $PATH'
                 sh 'echo $USER $USERNAME $UID'
-                sh "ll /root/.sdkman/candidates/maven/current/bin/"
+                sh "ls -l /root/.sdkman/candidates/"
             }
         }
 
