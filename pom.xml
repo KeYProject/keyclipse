@@ -321,7 +321,7 @@
 			</build>
 		</profile>
 
-		<!-- JavaDoc for update site projects -->
+		<!-- JavaDoc for update site projects 
 		<profile>
 			<id>tycho-javadoc-for-updatesite</id>
 			<activation>
@@ -422,7 +422,7 @@
 				</plugins>
 			</build>
 		</profile>
-
+		-->
 		<profile>
 			<id>default-plugin-configurations</id>
 			<activation>
