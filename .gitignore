@@ -56,3 +56,4 @@ buildNumber.properties
 .polyglot.feature.xml
 .polyglot.META-INF
 .polyglot.category.xml
+.tycho-consumer-pom.xml
