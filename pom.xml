@@ -16,7 +16,7 @@
 	<version>0.1.0-SNAPSHOT</version>
 
 	<properties>
-		<tools.mdsd.dependencies.eclipse-version>2022-03</tools.mdsd.dependencies.eclipse-version>
+		<tools.mdsd.dependencies.eclipse-version>2023-12</tools.mdsd.dependencies.eclipse-version>
 		<tycho.version>4.0.4</tycho.version>
 		<tycho-javadoc.version>2.2.0</tycho-javadoc.version>
 		<javadoc.args>
@@ -101,12 +101,12 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/${tools.mdsd.dependencies.eclipse-version}</url>
 		</repository>
+		<!--
 		<repository>
 			<id>eclipse-orbit</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/tools/orbit/downloads/${tools.mdsd.dependencies.eclipse-version}</url>
-		</repository>
-		<!--
+		</repository>		
          <repository>
          <id>mdsd.tools-ecoreworkflow</id>
          <layout>p2</layout>
