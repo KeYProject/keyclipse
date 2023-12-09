@@ -64,7 +64,7 @@
   </modules>
 
   <name>${project.artifactId}</name>
-  <description>A common parent POM for all Eclipse builds of MDSD.tools.</description>
+  <description>A common parent KeYclipse.</description>
   <url>http://key-project.org/</url>
   <packaging>pom</packaging>
 
