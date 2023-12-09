@@ -51,3 +51,9 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/maven
+
+
+.polyglot.feature.xml
+.polyglot.META-INF
+.polyglot.category.xml
+.tycho-consumer-pom.xml

@@ -73,13 +73,14 @@ public class KeYProjectCounterExampleGenerator extends AbstractSideProofCounterE
     protected void handleLauncherStopped(final SolverLauncher launcher, 
                                          final Collection<SMTSolver> finishedSolvers) {
         for (InternSMTProblem problem : problems) {
-            if (problem.getSolver().getType() == SolverType.Z3_CE_SOLVER &&
+            /*weigl: disabled. API. 
+              if (problem.getSolver().getType() == SolverType.Z3_CE_SOLVER &&
                     problem.getSolver().getSocket().getQuery() != null) {
                 Model model = problem.getSolver().getSocket().getQuery().getModel();
                 model.removeUnnecessaryObjects();
                 model.addAliases();
                 keYProjectCounterExamples.add(new KeYProjectCounterExample(computeProblemId(problem), computeProblemName(problem), model));
-            }
+            }*/
         }
     }
 
@@ -89,7 +90,7 @@ public class KeYProjectCounterExampleGenerator extends AbstractSideProofCounterE
      * @return The computed name.
      */
     public static String computeProblemName(InternSMTProblem problem) {
-       return problem.getProblem().getName() + " (" + problem.getSolver().getType().getName() + ")";
+       return problem.getProblem().getName() + " (" + problem/*weigl disabled: .getSolver().getType().getName() */ + ")";
     }
     
     /**

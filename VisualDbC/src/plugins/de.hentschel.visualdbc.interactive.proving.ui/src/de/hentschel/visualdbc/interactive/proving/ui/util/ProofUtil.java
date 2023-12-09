@@ -218,7 +218,7 @@ public final class ProofUtil {
          CompoundCommand compoundCmd = new CompoundCommand("Proof reset");
          if (isProofReferenceResetRequired(proof)) {
             // Compute the edit parts to delete
-            List<Object> editPartsToDelete = new LinkedList<Object>();
+            List<EditPart> editPartsToDelete = new LinkedList<EditPart>();
             for (DbcProofReference refToDel : proof.getProofReferences()) {
                Collection<EditPart> targetEditPart = GMFUtil.findEditParts(proofEditPart, refToDel);
                editPartsToDelete.addAll(targetEditPart);
@@ -364,7 +364,7 @@ public final class ProofUtil {
    public static void deleteReferences(ShapeNodeEditPart proofEditPart, List<DbcProofReference> referencesToDelete) {
       if (isEditPartAlive(proofEditPart)) {
          // Compute the edit parts to delete
-         List<Object> editPartsToDelete = new LinkedList<Object>();
+         List<EditPart> editPartsToDelete = new LinkedList<EditPart>();
          for (DbcProofReference refToDel : referencesToDelete) {
             Collection<EditPart> targetEditPart = GMFUtil.findEditParts(proofEditPart, refToDel);
             editPartsToDelete.addAll(targetEditPart);
