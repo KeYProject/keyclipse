@@ -72,6 +72,8 @@ public class SMTProblemPropertyPage extends PropertyPage {
    @Override
    protected Control createContents(Composite parent) {
       TabFolder tabFolder = new TabFolder(parent, SWT.NONE);
+      
+      /* weigl: disabled. problem does not offer getSolver()
       if (problem.getSolver().getType() == SolverType.Z3_CE_SOLVER &&
           problem.getSolver().getSocket().getQuery() != null) {
          // Create model
@@ -91,7 +93,7 @@ public class SMTProblemPropertyPage extends PropertyPage {
          viewer.getControl().setMenu(manager.createContextMenu(viewer.getControl()));
          // Create help tab
          createTextTab(tabFolder, "Help", InformationWindow.CE_HELP);
-      }
+      }*/
       for (Information information : problem.getInformation()) {
          createTextTab(tabFolder, information.getTitle(), information.getContent());
       }
