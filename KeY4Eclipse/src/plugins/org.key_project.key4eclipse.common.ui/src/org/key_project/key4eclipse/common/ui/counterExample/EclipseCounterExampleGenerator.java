@@ -82,7 +82,7 @@ public class EclipseCounterExampleGenerator extends AbstractSideProofCounterExam
       // Check for warnings
       for (SolverType type : solverTypes) {
          if (type.supportHasBeenChecked() && !type.isSupportedVersion()) {
-            information.add(new InformationMessage(SolverListener.computeSolverTypeWarningTitle(type), SolverListener.computeSolverTypeWarningMessage(type), false));
+            information.add(new InformationMessage("Warning:" + type, SolverListener.computeSolverTypeWarningMessage(type), false));
          }
       }
    }
@@ -112,8 +112,8 @@ public class EclipseCounterExampleGenerator extends AbstractSideProofCounterExam
       dialog.setHelpAvailable(false);
       // Fill PreferenceManager
       for (InternSMTProblem problem : problems) {
-         if (problem.createInformation()) {
-            information.add(new InformationMessage(SolverListener.createExceptionTitle(problem), problem, true));
+         for(var info : problem.getInformation()) {
+            information.add(new InformationMessage(info.getTitle(), problem, true));
          }
          manager.addToRoot(new SMTProblemPreferenceNode(computeProblemId(problem), 
                                                         computeProblemName(problem), 
@@ -133,7 +133,7 @@ public class EclipseCounterExampleGenerator extends AbstractSideProofCounterExam
     * @return The computed name.
     */
    public static String computeProblemName(InternSMTProblem problem) {
-      return problem.getProblem().getName() + " (" + problem.getSolver().getType().getName() + ")";
+      return problem.getProblem().getName() + " (" + problem/*weigl: disabled .getSolver().getType().getName()*/ + ")";
    }
    
    /**

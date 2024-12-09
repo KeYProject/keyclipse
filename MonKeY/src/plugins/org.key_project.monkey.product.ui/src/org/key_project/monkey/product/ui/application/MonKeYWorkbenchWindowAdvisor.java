@@ -45,7 +45,7 @@ public class MonKeYWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 //        configurer.setInitialSize(new Point(400, 300));
         configurer.setShowCoolBar(false);
         configurer.setShowStatusLine(false);
-        configurer.setShowFastViewBars(false);
+        // weigl: n/a in new eclipse versions: configurer.setShowFastViewBars(false);
         configurer.setShowMenuBar(false);
         configurer.setShowPerspectiveBar(false);
         configurer.setShowProgressIndicator(true);
